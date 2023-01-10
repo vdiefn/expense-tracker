@@ -1,1 +1,44 @@
-<h2>index</h2>
+<div class="container">
+  <!--尚缺篩選功能-->
+
+
+  <div class="row totalAmount mt-5">
+      <h3 class="col-4 fw-bold">總金額：</h4>
+      <h2 class="col-6 fw-bold">12345</h2>
+
+  </div>
+  <div class="row">
+    <div class="col-3 mt-5">
+      <h5 class="fw-bold">日期</h5>
+    </div>
+    <div class="col-2 mt-5">
+      <h5 class="fw-bold">項目</h5>
+    </div>
+    <div class="col-3 mt-5 text-center">
+      <h5 class="fw-bold">金額</h5>
+    </div>
+    <hr>
+    {{#each expenses}}
+    <div class="col-3">
+      <p class="fs-5">{{this.date}}</p>
+    </div>
+    <div class="col-2">
+      <p class="fs-5">{{this.name}}</p>
+    </div>
+    <div class="col-3 text-center">
+      <p class="fs-5" id ="amount">{{this.amount}}</p>
+    </div>
+    <div class="col-2">
+      <a class="btn btn-outline-primary" href="/" role="button">修改</a>
+    </div>
+    <div class="col-2">
+      <a class="btn btn-outline-primary" href="/" role="button">刪除</a>
+    </div>
+    {{/each}}
+    <hr class="mt-5">
+    <div class="d-flex justify-content-center mb-5 mt-5">
+      <a class="btn btn-outline-primary" href="./expenses/new" role="button">新增支出</a>
+    </div>
+  </div>
+
+</div>
