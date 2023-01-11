@@ -6,7 +6,7 @@
         <div class="card-body">
           <h5 class="card-title"><i class="fa-solid fa-sack-dollar"> 請輸入你的支出</i></h5>
           <hr>
-          <form method="POST" action="/expenses/{{expense._id}}/edit">
+          <form method="POST" action="/expenses/{{expense._id}}?_method=PUT">
 
             <div class="row mb-3 mt-2 g-2">
               <label for="name" class="col-md-4 col-form-label fs-5">

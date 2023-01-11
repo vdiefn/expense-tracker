@@ -25,7 +25,7 @@ db.once('open', () => {
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
-
+app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({extended: true}))
 
 //搜尋
@@ -67,13 +67,27 @@ app.get('/', (req, res) => {
   .catch(error => console.log(error))
 })
 
-app.get('/', (req, res) => {
-  res.render('index')
-})
+//缺篩選功能
+// app.get('/', (req, res) => {
+//   const filter = req.query.filter
+//   console.log(filter)
+  // if (filter) {
+  //   Expense.find({ category: filter })
+  //     .lean()
+  //     .then(expenses => res.render('index', { expenses }))
+  //     .catch(error => console.log(error))
+  // } else {
+  //   Expense.find()
+  //     .lean()
+  //     .then(expenses => res.render('index', { expenses }))
+  //     .catch(error => console.log(error))
+  // }
+// })
 
 //修改
 app.get('/expenses/:id/edit', (req, res) => {
   const id = req.params.id
+  const value = select()
   return Expense.findById(id)
     .lean()
     .then((expense) => res.render('edit', {expense}))
@@ -82,6 +96,7 @@ app.get('/expenses/:id/edit', (req, res) => {
 app.post('/expenses/:id/edit', (req, res) => {
   const id = req.params.id
   const { name, date, category, amount} = req.body
+  
   return Expense.findById(id)
     .then( expense => {
       expense.name = name
