@@ -6,7 +6,7 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 
 
 const demoExpense = {
-  "result" : [
+  result: [
     { 
       "name":"午餐",
       "date":"2019/04/23",
@@ -40,9 +40,6 @@ const demoExpense = {
   ]
 }
 
-db.on('error', () => {
-  console.log('mongodb error')
-})
 
 db.once('open', () => {
   console.log('mongodb is connecting!')
