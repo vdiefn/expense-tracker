@@ -1,10 +1,12 @@
 const express = require('express')
+const session = require('express-session')
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const Expense = require('./models/expense')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const routes = require('./routes')
+const usePassport = require('./config/passport')
 require('./config/mongoose')
 
 
@@ -19,10 +21,16 @@ const port = 3000
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
+app.use(session({
+  secret: 'ThisIsMySecret',
+  resave: false,
+  saveUninitialized: true
+}))
 app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(routes)
-
+//呼叫passport函式並傳入app，這要寫在路由之前
+usePassport(app)
 
 
 //搜尋

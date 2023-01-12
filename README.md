@@ -21,12 +21,14 @@
 - Mongoose
 - Method-override
 - Express-session
+- Passport
+- Passport-local
 
 ## 開始使用
 - clone專案至本機電腦
 - 進入專案資料夾
 - 專案下載完成後輸入：npm install
-- 安裝完成後接續安裝Express, express-handlebars...... 等
+- 安裝完成後接續安裝Express, Express-handlebars......等
 - 新增.env檔案設定環境變數，並加入MONGODB_URI = mongodb-srv......
 - 新增種子資料：npm run seed
 - 安裝完成會看到：Demo seeder done!
