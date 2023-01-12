@@ -3,7 +3,7 @@ const router = express.Router()
 const User = require('../../models/user')
 const passport = require('passport')
 
-//燈入頁
+//登入頁
 router.get('/login', (req, res) => {
   res.render('login')
 })
@@ -35,5 +35,11 @@ router.post('/register', (req, res) => {
 })
 
 
+
+//登出頁
+router.get('/logout', (req, res) => {
+  req.logout()
+  res.redirect('/users/login')
+})
 
 module.exports = router
