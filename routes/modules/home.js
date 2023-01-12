@@ -22,9 +22,20 @@ router.get('/search', (req, res) => {
 
 //瀏覽首頁
 router.get('/', (req, res) => {
+  let totalAmount = 0
+  function total(records){
+    let total = 0
+    records.map((record) => {
+      total = total + record.amount
+    })
+    return total
+  }
   Expense.find()
     .lean()
-    .then(expenses => res.render('index', { expenses }))
+    .then(expenses =>{
+      totalAmount = total(expenses)
+      res.render('index', { expenses, totalAmount })
+    }) 
     .catch(error => console.log(error))
 })
 
