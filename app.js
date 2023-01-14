@@ -28,9 +28,17 @@ app.use(session({
 }))
 app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(routes)
 //呼叫passport函式並傳入app，這要寫在路由之前
 usePassport(app)
+
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.user = req.user
+  next()
+})
+
+app.use(routes)
+
 
 
 //搜尋
