@@ -23,6 +23,7 @@
 - Express-session
 - Passport
 - Passport-local
+- connect-flash
 
 ## 開始使用
 - clone專案至本機電腦
