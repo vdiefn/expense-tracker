@@ -16,7 +16,8 @@ router.get('/search', (req, res) => {
   const keywords = req.query.keywords
   const keyword = req.query.keywords.trim()
   let totalAmount = 0
-  Expense.find()
+  const userId = req.user._id
+  Expense.find({userId})
     .lean()
     .then(expenses => {
       const searchResult = expenses.filter(expense => {
@@ -33,7 +34,8 @@ router.get('/search', (req, res) => {
 //瀏覽首頁
 router.get('/', (req, res) => {
   let totalAmount = 0
-  Expense.find()
+  const userId = req.user._id
+  Expense.find({userId})
     .lean()
     .then(expenses =>{
       totalAmount = total(expenses)
