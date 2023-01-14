@@ -23,7 +23,8 @@
 - Express-session
 - Passport
 - Passport-local
-- connect-flash
+- Connect-flash
+- Passport-Facebook
 
 ## 開始使用
 - clone專案至本機電腦

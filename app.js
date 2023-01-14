@@ -10,20 +10,19 @@ const usePassport = require('./config/passport')
 require('./config/mongoose')
 const flash = require('connect-flash')
 
-
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 const app = express()
-const port = 3000
+const port = process.env.PORT
 
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(session({
-  secret: 'ThisIsMySecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
