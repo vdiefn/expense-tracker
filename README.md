@@ -31,7 +31,7 @@
 - 進入專案資料夾
 - 專案下載完成後輸入：npm install
 - 安裝完成後接續安裝Express, Express-handlebars......等
-- 新增.env檔案設定環境變數，並加入MONGODB_URI = mongodb-srv......
+- 新增.env檔案設定環境變數，可於.env.example內看到更多環境變數的設定。
 - 新增種子資料：npm run seed
 - 安裝完成會看到：Demo seeder done!
 - 啟動程式請輸入：npm run dev
