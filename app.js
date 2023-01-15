@@ -9,6 +9,7 @@ const routes = require('./routes')
 const usePassport = require('./config/passport')
 require('./config/mongoose')
 const flash = require('connect-flash')
+const Handlebars = require('handlebars')
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
@@ -21,6 +22,11 @@ const port = process.env.PORT
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
+//引入handlebars-helper
+Handlebars.registerHelper('ifEquals', function (a, b, options) {
+  return (a.toString() === b.toString()) ? options.fn(this) : options.inverse(this);
+})
+
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,

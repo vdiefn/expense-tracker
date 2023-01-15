@@ -59,12 +59,22 @@
       <h5 class="fw-bold">金額</h5>
     </div>
     <hr>
+    
     {{#each expenses}}
     <div class="col-3">
       <p class="fs-5">{{this.date}}</p>
     </div>
+
     <div class="col-2">
+      <div style="display:inline;">
+        {{#ifEquals 1 this.category}}<i class="fa-solid fa-house"></i>{{/ifEquals}}
+        {{#ifEquals 2 this.category}}<i class="fa-solid fa-van-shuttle"></i>{{/ifEquals}}
+        {{#ifEquals 3 this.category}}<i class="fa-solid fa-face-grin-beam"></i>{{/ifEquals}}
+        {{#ifEquals 4 this.category}}<i class="fa-solid fa-utensils"></i>{{/ifEquals}}
+        {{#ifEquals 5 this.category}}<i class="fa-solid fa-pen"></i>{{/ifEquals}}
+      </div>
       <p class="fs-5">{{this.name}}</p>
+
     </div>
     <div class="col-3 text-center">
       <p class="fs-5" id ="amount">{{this.amount}}</p>

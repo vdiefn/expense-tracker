@@ -1,6 +1,8 @@
 const express = require('express')
+const category = require('../../models/category')
 const router = express.Router()
 const Expense = require('../../models/expense')
+const Category = require('../../models/category')
 
 //計算總金額
 function total(records) {
@@ -39,7 +41,7 @@ router.get('/', (req, res) => {
     .lean()
     .then(expenses =>{
       totalAmount = total(expenses)
-      res.render('index', { expenses, totalAmount })
+    return res.render('index', {expenses, totalAmount}) 
     }) 
     .catch(error => console.log(error))
 })
