@@ -1,19 +1,33 @@
-<!--缺篩選功能-->
+<!--篩選功能-->
 <div class="container justify-content-center ms-5 mt-5">
     <div class="form-group ms-5">
       <form action="/">
         <div class="ms-5">
-          <div class="ms-5">  
-            <div class="col-1 ms-5">
+          <div class="ms-5 d-flex justify-content-start">  
+            <div class="col-1 me-5">
               <select name="filter" id="filter" style="width:180px; height:50px; border-radius:6%; border-color:#D9D9D9; padding-left: 10px;">
-                <option value="0" disable>請選擇類別</option>
-                <option value="1" {{#unless filter}}selected {{/unless}}>家居物業</option>
-                <option value="2" {{#if filter}}selected {{/if}}>交通出行</option>
-                <option value="3" {{#if filter}}selected {{/if}}>休閒娛樂</option>
-                <option value="4" {{#if filter}}selected {{/if}}>餐飲食品</option>
-                <option value="5" {{#if filter}}selected {{/if}}>其他</option>
+                <option value="0" {{#if filter}} selected {{/if}}>請選擇類別</option>
+                <option value="1" {{#if filter}} selected {{/if}}>家居物業</option>
+                <option value="2" {{#if filter}} selected {{/if}}>交通出行</option>
+                <option value="3" {{#if filter}} selected {{/if}}>休閒娛樂</option>
+                <option value="4" {{#if filter}} selected {{/if}}>餐飲食品</option>
+                <option value="5" {{#if filter}} selected {{/if}}>其他</option>
               </select>
             </div>
+            <div class="col-1 ms-4">
+              <button type="submit" class="btn btn-outline-secondary">篩選</button>
+            </div>
+          {{!-- <div class="col-1 me-5">
+            <select name="sort" id="sort"
+              style="width:180px; height:50px; border-radius:6%; border-color:#D9D9D9; padding-left: 10px;">
+              <option value="" {{#if sort}} selected {{/if}}>排序方式</option>
+              <option value="asc" {{#if sort}} selected {{/if}}>遞增</option>
+              <option value="desc" {{#if sort}} selected {{/if}}>遞減</option>
+            </select>
+          </div>
+          <div class="col-1 ms-4">
+            <button type="submit" class="btn btn-outline-secondary">排序</button>
+          </div> --}}
           </div>
         </div>
       </form>
@@ -30,9 +44,11 @@
         </div>
         <div class="col-1">
           <div class="input-group-append">
-            <button class="btn btn-major " type="submit" id="search-button"><i class="fas fa-search"></i></button>
+            <button class="btn btn-major " type="submit" id="search-button"><i class="fas fa-search"></i>
+            </button>
           </div>
         </div>
+        
     </form>
   </div>
   
@@ -55,7 +71,7 @@
     <div class="col-2 mt-5">
       <h5 class="fw-bold">項目</h5>
     </div>
-    <div class="col-3 mt-5 text-center">
+    <div class="col-5 mt-5 text-center">
       <h5 class="fw-bold">金額</h5>
     </div>
     <hr>
@@ -65,17 +81,19 @@
       <p class="fs-5">{{this.date}}</p>
     </div>
 
-    <div class="col-2">
-      <div style="display:inline;">
-        {{#ifEquals 1 this.category}}<i class="fa-solid fa-house"></i>{{/ifEquals}}
-        {{#ifEquals 2 this.category}}<i class="fa-solid fa-van-shuttle"></i>{{/ifEquals}}
-        {{#ifEquals 3 this.category}}<i class="fa-solid fa-face-grin-beam"></i>{{/ifEquals}}
-        {{#ifEquals 4 this.category}}<i class="fa-solid fa-utensils"></i>{{/ifEquals}}
-        {{#ifEquals 5 this.category}}<i class="fa-solid fa-pen"></i>{{/ifEquals}}
+    <div class="d-flex col-3 justiy-content-evenly">
+      <div class="col-2 mt-2">
+        {{#ifEquals '1' this.category}}<i class="fa-solid fa-house"></i>{{/ifEquals}}
+        {{#ifEquals '2' this.category}}<i class="fa-solid fa-van-shuttle"></i>{{/ifEquals}}
+        {{#ifEquals '3' this.category}}<i class="fa-solid fa-face-grin-beam"></i>{{/ifEquals}}
+        {{#ifEquals '4' this.category}}<i class="fa-solid fa-utensils"></i>{{/ifEquals}}
+        {{#ifEquals '5' this.category}}<i class="fa-solid fa-pen"></i>{{/ifEquals}}
       </div>
-      <p class="fs-5">{{this.name}}</p>
-
+      <div>
+        <p class="fs-5">{{this.name}}</p>
+      </div>
     </div>
+
     <div class="col-3 text-center">
       <p class="fs-5" id ="amount">{{this.amount}}</p>
     </div>

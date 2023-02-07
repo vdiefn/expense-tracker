@@ -15,19 +15,20 @@
 
 ## 開發工具
 - Node.js
-- Express
-- Express-handlebars
-- dotenv
-- Mongoose
-- Method-override
-- Express-session
-- Passport
-- Passport-local
-- Connect-flash
-- Passport-Facebook
+- Express@4.16.4
+- Express-handlebars@3.0.0
+- dotenv@16.0.3
+- Mongoose@5.9.13
+- Method-override@3.0.0
+- Express-session@1.17.1
+- Passport@0.4.1
+- Passport-local@1.0.0
+- Connect-flash@0.1.1
+- Bcrypt.js@2.4.3
+- Passport-Facebook@3.0.0
 
 ## 開始使用
-- clone專案至本機電腦
+- clone專案至電腦
 - 進入專案資料夾
 - 專案下載完成後輸入：npm install
 - 安裝完成後接續安裝Express, Express-handlebars......等

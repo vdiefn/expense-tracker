@@ -36,14 +36,38 @@ router.get('/search', (req, res) => {
 //瀏覽首頁
 router.get('/', (req, res) => {
   let totalAmount = 0
+  const filter = req.query.filter
   const userId = req.user._id
-  Expense.find({userId})
-    .lean()
-    .then(expenses =>{
-      totalAmount = total(expenses)
-    return res.render('index', {expenses, totalAmount}) 
-    }) 
-    .catch(error => console.log(error))
-})
+  if (filter) {
+    Expense.find({ category: filter } )
+      .lean()
+      .then(expenses => {
+        totalAmount = total(expenses)
+        return res.render('index', { expenses, totalAmount, category: filter})  
+      })  
+    }
+    else {
+    Expense.find({ userId })
+      .lean()
+      .then(expenses => {
+        totalAmount = total(expenses)
+        return res.render('index', { expenses, totalAmount })
+      })    
+    .catch(error => console.log(error))  
+    }
+  })
 
 module.exports = router
+
+//瀏覽首頁
+// router.get('/', (req, res) => {
+//   let totalAmount = 0
+//   const userId = req.user._id
+//   Expense.find({ userId })
+//     .lean()
+//     .then(expenses => {
+//       totalAmount = total(expenses)
+//       return res.render('index', { expenses, totalAmount })
+//     })
+//     .catch(error => console.log(error))
+// })
