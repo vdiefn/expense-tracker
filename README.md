@@ -34,7 +34,7 @@
 - 安裝完成後接續安裝Express, Express-handlebars......等
 - 新增.env檔案設定環境變數，可於.env.example內看到更多環境變數的設定。
 - 新增種子資料：npm run seed
-- 安裝完成會看到：Demo seeder done!
+- 安裝完成會看到：category seeder done! 以及 Demo user seeder done!
 - 啟動程式請輸入：npm run dev
 - 成功啟動後會於終端機看到：Express is running on http://localhost:3000 以及 mongodb connected!
 - 於瀏覽器輸入http://localhost:3000 後可開始使用
