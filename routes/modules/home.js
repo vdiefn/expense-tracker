@@ -39,7 +39,7 @@ router.get('/', (req, res) => {
   const filter = req.query.filter
   const userId = req.user._id
   if (filter) {
-    Expense.find({ category: filter } )
+    Expense.find({ category: filter, userId } )
       .lean()
       .then(expenses => {
         totalAmount = total(expenses)

@@ -35,7 +35,6 @@ const categoryList = [
 
 
 db.once('open', () => {
-  console.log('mongodb connected')
   return Promise.all(Array.from(
     { length: 5},
     (_, i) => Category.create({ 
